@@ -15,6 +15,10 @@ namespace User.API.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Role>()
+                .ToTable("Role")
+                .HasKey(r => r.Id);
         }
     }
 }

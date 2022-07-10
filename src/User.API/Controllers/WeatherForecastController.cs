@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using User.API.Database;
+using User.API.Models;
 
 namespace User.API.Controllers
 {
@@ -22,15 +23,18 @@ namespace User.API.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<Role> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+
+            return _context.Roles.ToArray();
+
+           /* return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
-            .ToArray();
+            .ToArray();*/
         }
     }
 }
